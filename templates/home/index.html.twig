@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+	{% block title %}Bienvenue
+	{% endblock %}
+
+	{% block body %}
+
+
+		<div class="example-wrapper">
+			{% if app.user %}
+				<div class="container">
+					<h1>Bienvenue
+						{{ app.user.fullName }}</h1>
+					<a href="{{path('app_facture')}}" class="btn btn-primary">acceder a votre gestionnaire de facture</a>
+				</div>
+			{% else %}
+				<div class="container">
+					<h1>Bienvenue
+					</h1>
+					<a href="{{path('security.login')}}" class="btn btn-primary">Se connecter</a>
+					<a href="{{path('security.registration')}}" class="btn btn-primary">S'inscrire</a>
+				</div>
+			{% endif %}
+
+		{% endblock %}

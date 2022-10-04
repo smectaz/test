@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Facture;
+
 use App\Services\appelFacture;
 use App\Repository\FactureRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,15 +17,12 @@ class FactureController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
     #[Route('/facture', name: 'app_facture')]
-    public function edition(appelFacture $appel, FactureRepository $repository, PaginatorInterface $paginator, Request $request, Facture $facture): Response
+    public function edition(appelFacture $appel, FactureRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $factures = $appel->edition($repository, $paginator, $request);
-    
-
-
+        
         return $this->render('facture/index.html.twig', [
-            'factures' => $factures,
-
+            'factures' => $factures
         ]);
     }
 }
