@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+	{% block title %}Nouvelle facture
+	{% endblock %}
+
+	{% block body %}
+		<div class="container">
+
+			<h1 class="mt-4">Création d'une facture</h1>
+
+			{{ form_start(form) }}
+
+			<div class="form-group">
+				{{ form_label(form.designation) }}
+				{{ form_widget(form.designation) }}
+				<div class="form-error">
+					{{ form_errors(form.designation) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.description) }}
+				{{ form_widget(form.description) }}
+				<div class="form-error">
+					{{ form_errors(form.description) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.prixHt) }}
+				{{ form_widget(form.prixHt) }}
+				<div class="form-error">
+					{{ form_errors(form.prixHt) }}
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+
+
+	{% endblock %}

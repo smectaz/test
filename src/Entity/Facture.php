@@ -23,9 +23,6 @@ class Facture
     #[ORM\Column]
     private ?float $prixHt = null;
 
-    #[ORM\Column]
-    private ?float $prixTtc = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -63,18 +60,6 @@ class Facture
     public function setPrixHt(float $prixHt): self
     {
         $this->prixHt = $prixHt;
-
-        return $this;
-    }
-
-    public function getPrixTtc(): ?float
-    {
-        return $this->prixTtc;
-    }
-
-    public function setPrixTtc(float $prixTtc): self
-    {
-        $this->prixTtc = $prixTtc;
 
         return $this;
     }

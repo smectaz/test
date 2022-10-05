@@ -5,11 +5,11 @@
 	{% endblock %}
 
 	{% block body %}
-		<div class="container">
+		<div class="container-xl">
 			<nav class="navbar d-flex justify-content-between">
 				<img src="" alt="LOGO" class="bg-success">
 				<div class="bg-success">
-					<p class="text-center">tel:0101010101</p>
+					<p class="text-center">tel:{{ "0101010101"|replace({'0101010101': "XXXXXXXXXX"}) }}</p>
 					<p>De Lundi à Vendredi de 9 h à 18h</p>
 				</div>
 			</nav>
@@ -25,22 +25,23 @@
 				</thead>
 			</table>
 			<main class="d-flex justify-content-between">
-				<aside class="bg-success">
+				<aside class="bg-success col-3 text-center">
 					<h3>Menu</h3>
 					<a>Gerer mes factures</a>
 				</aside>
-				<div>
+				<div class="col-6 text-center">
 					<h3>Liste des factures</h3>
-					<button class="btn btn-outline-dark mt-2">Créer une nouvelle facture</button>
+					<a href="{{ path('facture.new') }}" class="btn btn-outline-dark mt-2">Créer une nouvelle facture</a>
 					<table class="table table-success table-striped table-hover table-bordered mt-4 text-center">
 						<thead>
 							<tr>
-								<th scope="col">Numéro de facture</th>
-								<th scope="col">Désignation</th>
-								<th scope="col">Prix HT</th>
-								<th scope="col">TVA</th>
-								<th scope="col">Prix TTC</th>
-								<th scope="col">Actions</th>
+								<th>Num
+								</th>
+								<th>Désignation</th>
+								<th>Prix HT</th>
+								<th>TVA</th>
+								<th>Prix TTC</th>
+								<th colspan="2">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,23 +49,30 @@
 								<tr class="table-primary">
 									<th scope="row">{{ facture.id}}</th>
 									<td>{{ facture.designation}}</td>
-									<td>{{ facture.prixHt }}</td>
-									<td>20%</td>
-									<td>{{ facture.prixTtc }}</td>
-
-									{# <td><a href="{{ path('facture.edit', { id: facture.id} ) }}" class="btn btn-info btn-sm">Modifier</a></td>
-																																																																																							<td><a href="{{ path('facture.delete', { id: facture.id} ) }}" onclick="return confirm('Voulez-vous vraiment supprimer cette recette ?')" class="btn btn-danger btn-sm">SUPPRIMER</a></td> #}
+									<td>{{ facture.prixHt }}
+										€</td>
+									<td>{{ (facture.prixHt/100*20) }}
+										€</td>
+									<td>{{ (facture.prixHt/100*20)+facture.prixHt }}
+										€</td>
+									<td>
+										<a href="{{ path('facture.edit', { id: facture.id} ) }}" class="btn btn-info btn-sm">Modifier</a>
+									</td>
+									<td>
+										<a href="{{ path('facture.delete', { id: facture.id} ) }}" onclick="return confirm('Voulez-vous vraiment supprimer cette recette ?')" class="btn btn-danger btn-sm">SUPPRIMER</a>
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
 					</table>
 				</div>
-				<section class="flex-column">
+				<section class="flex-column col-3 text-center">
 					<div class="bg-success">
 						<h3>Nous Contacter</h3>
 						<p>0101010101</p>
 						<p>{{ app.user.email }}</p>
 					</div>
+					<div style="width:325px; height:200px; background:#198754;"></div>
 				</section>
 			</main>
 
